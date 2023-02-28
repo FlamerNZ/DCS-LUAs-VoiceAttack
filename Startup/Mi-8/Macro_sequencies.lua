@@ -311,7 +311,7 @@ push_start_command(dt, {message = _("Danger Alarm To 20 Meters"), message_timeou
 for i = 1, 776, 1 do
 	push_start_command(0.01, {device = devices.RADAR_ALTIMETER, action = device_commands.Button_1, value = -.00104})
 end
-
+-- this will be great once we get it going
 -- now we should be safe to close the windows
 push_start_command(dt, {message = _("LEFT COCKPIT WINDOW - CLOSE"), message_timeout = mto})
 push_start_command(dt, {device = devices.CPT_MECH, action = device_commands.Button_15, value = 0.0})
