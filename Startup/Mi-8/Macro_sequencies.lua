@@ -162,7 +162,7 @@ push_start_command(17.0, {message = _("APU STARTED"), message_timeout = mto})
 -- Left engine
 push_start_command(dt, {device = devices.ELEC_INTERFACE, action = device_commands.Button_1, value = 1.0})  -- Standby Generator Switch, ON/OFF
 push_start_command(dt, {device = devices.ELEC_INTERFACE, action = device_commands.Button_9, value = 1.0})  -- Equipment Test Switch, ON/OFF
-push_start_command(dt, {message = _("STARTING LEFT ENGINE (61 SEC)"), message_timeout = 61.0})
+push_start_command(dt, {message = _("STARTING LEFT ENGINE (47 SEC)"), message_timeout = 47.0})
 push_start_command(dt, {message = _("ENGINE START MODE - START"), message_timeout = mto})
 push_start_command(dt, {device = devices.ENGINE_INTERFACE, action = device_commands.Button_27, value = 1.0, check_condition = APU_START_FAULT}) -- Engine Start Mode Switch, START/OFF/COLD CRANKING
 push_start_command(dt, {message = _("ENGINE SELECTOR SWITCH - LEFT"), message_timeout = mto})
@@ -172,10 +172,10 @@ push_start_command(dt, {device = devices.ENGINE_INTERFACE, action = device_comma
 push_start_command(3.0, {device = devices.ENGINE_INTERFACE, action = device_commands.Button_5, value = 0.0}) -- Release
 push_start_command(3.0, {message = _("LEFT ENGINE FUEL SHUTOFF LEVER - OPEN"), message_timeout = mto})
 push_start_command(3.0, {device = devices.ENGINE_INTERFACE, action = device_commands.Button_9, value = 1})
-push_start_command(55.0, {message = _("LEFT ENGINE - STARTED"), message_timeout = mto})
+push_start_command(38.0, {message = _("LEFT ENGINE - STARTED"), message_timeout = mto})
 
 -- Right engine
-push_start_command(dt, {message = _("STARTING RIGHT ENGINE (61 SEC)"), message_timeout = 61.0})
+push_start_command(dt, {message = _("STARTING RIGHT ENGINE (49 SEC)"), message_timeout = 49.0})
 push_start_command(dt, {message = _("ENGINE SELECTOR SWITCH - RIGHT"), message_timeout = mto})
 push_start_command(dt, {device = devices.ENGINE_INTERFACE, action = device_commands.Button_8, value = 1.0, check_condition = LEFT_ENGINE_START_FAULT})
 push_start_command(dt, {message = _("ENGINE START BUTTON - HOLD FOR 3 SEC"), message_timeout = mto})
@@ -183,7 +183,7 @@ push_start_command(dt, {device = devices.ENGINE_INTERFACE, action = device_comma
 push_start_command(3.0, {device = devices.ENGINE_INTERFACE, action = device_commands.Button_5, value = 0.0})
 push_start_command(3.0, {message = _("RIGHT ENGINE FUEL SHUTOFF LEVER - OPEN"), message_timeout = mto})
 push_start_command(3.0, {device = devices.ENGINE_INTERFACE, action = device_commands.Button_10, value = 1})
-push_start_command(55.0, {message = _("RIGHT ENGINE - STARTED"), message_timeout = mto})
+push_start_command(40.0, {message = _("RIGHT ENGINE - STARTED"), message_timeout = mto})
 
 -- Engines started, selector to neutral
 push_start_command(dt, {message = _("ENGINE SELECTOR SWITCH - CENTER"), message_timeout = mto})
