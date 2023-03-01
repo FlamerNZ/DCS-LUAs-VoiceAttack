@@ -300,8 +300,8 @@ push_start_command(dt, {device = devices.NAVLIGHT_SYSTEM, action = device_comman
 push_start_command(dt, {device = devices.WEAPON_SYS, action = device_commands.Button_30, value = 1.0})
 push_start_command(dt, {device = devices.WEAPON_SYS, action = device_commands.Button_22, value = -1.0})
 push_start_command(dt, {device = devices.WEAPON_SYS, action = device_commands.Button_27, value = 1.0})
-push_start_command(dt, {device = devices.PKV, action = device_commands.Button_3, value = -0.00144}) 
---todo Right Dome switch "left and right ceiling light switch.  and 5.5v light switch and ARC-UH Light Switch and cargo cabin duty lights"
+push_start_command(dt, {device = devices.PKV, action = device_commands.Button_3, value = -1.0}) 
+--todo Right Dome switch "left and right ceiling light switch.  and 5.5v light switch and ARC-UH Light Switch and cargo cabin duty lights" sdasdasdas155
 push_start_command(dt, {device = devices.EXT_CARGO_EQUIPMENT, action = device_commands.Button_5, value = 1.0})
 push_start_command(dt, {device = devices.R_828, action = device_commands.Button_1, value = 0.4})
 push_start_command(dt, {device = devices.R_828, action = device_commands.Button_3, value = 1.0}) -- Press
@@ -311,6 +311,22 @@ push_start_command(dt, {message = _("Danger Alarm To 20 Meters"), message_timeou
 for i = 1, 776, 1 do
 	push_start_command(0.01, {device = devices.RADAR_ALTIMETER, action = device_commands.Button_1, value = -.00104})
 end
+
+--New Stuff
+push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_2, value = 0.0})
+push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_3, value = 0.0})
+push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_4, value = 1.0})
+push_start_command(dt, {device = devices.JADRO_1A, action = device_commands.Button_1, value = 1.0})
+push_start_command(dt, {device = devices.ARC_UD, action = device_commands.Button_12, value = 1.0})
+push_start_command(dt, {device = devices.ARC_UD, action = device_commands.Button_12, value = 1.0})
+
+push_start_command(dt, {device = devices.HEATER_KO50, action = device_commands.Button_4, value = 1.0})
+push_start_command(dt, {device = devices.HEATER_KO50, action = device_commands.Button_3, value = 1.0})
+push_start_command(dt, {device = devices.HEATER_KO50, action = device_commands.Button_2, value = 1.0})
+push_start_command(dt, {device = devices.HEATER_KO50, action = device_commands.Button_1, value = 1.0}) --Press
+push_start_command(10.0, {device = devices.HEATER_KO50, action = device_commands.Button_1, value = 0.0}) -- Release
+push_start_command(dt, {device = devices.ARC_UD, action = device_commands.Button_4, value = 0.0})
+push_start_command(dt, {device = devices.ARC_UD, action = device_commands.Button_12, value = 1.0})
 
 -- now we should be safe to close the windows
 push_start_command(dt, {message = _("LEFT COCKPIT WINDOW - CLOSE"), message_timeout = mto})
