@@ -149,7 +149,7 @@ push_start_command(dt, {message = _("R-828 RADIO POWER - ON"), message_timeout =
 push_start_command(dt, {device = devices.R_828, action = device_commands.Button_5, value = 1.0})
 
 -- APU
-push_start_command(dt, {message = _("STARTING APU (15 SEC)"), message_timeout = 15.0})
+push_start_command(dt, {message = _("STARTING APU (20 SEC)"), message_timeout = 20.0})
 push_start_command(dt, {message = _("APU START MODE - START"), message_timeout = mto})
 push_start_command(dt, {device = devices.ENGINE_INTERFACE, action = device_commands.Button_12, value = 1.0, check_condition = FUEL_PUMP_FAULT}) -- APU Start Mode Switch, START/COLD CRANKING/FALSE START
 push_start_command(dt, {message = _("APU START BUTTON - HOLD FOR 3 SEC"), message_timeout = mto})
@@ -157,7 +157,7 @@ push_start_command(dt, {device = devices.ENGINE_INTERFACE, action = device_comma
 push_start_command(3.0, {device = devices.ENGINE_INTERFACE, action = device_commands.Button_26, value = 0.0}) -- Release
 -- Backup Gen and Equip Test, so that we can tune the radios before the engines start up
 -- TODO
-push_start_command(25.0, {message = _("APU STARTED"), message_timeout = mto})
+push_start_command(17.0, {message = _("APU STARTED"), message_timeout = mto})
 
 -- Left engine
 push_start_command(dt, {device = devices.ELEC_INTERFACE, action = device_commands.Button_1, value = 1.0})  -- Standby Generator Switch, ON/OFF
@@ -273,7 +273,7 @@ push_start_command(dt, {device = devices.UV_26, action = device_commands.Button_
 push_start_command(0.1, {device = devices.UV_26, action = device_commands.Button_6, value = 0.0}) -- Release
 
 -- Fans
-push_start_command(dt, {message = _("PILOT'S FAN - ON - Essential for Soviet Choppers ;)"), message_timeout = mto})
+push_start_command(dt, {message = _("PILOT'S FAN - ON - Essential for Soviet Choppers ;)"), message_timeout = 10.0})
 push_start_command(dt, {device = devices.CPT_MECH, action = device_commands.Button_20, value = 1.0})
 push_start_command(dt, {message = _("COPILOT'S FAN - ON"), message_timeout = mto})
 
@@ -300,8 +300,7 @@ push_start_command(dt, {device = devices.NAVLIGHT_SYSTEM, action = device_comman
 push_start_command(dt, {device = devices.WEAPON_SYS, action = device_commands.Button_30, value = 1.0})
 push_start_command(dt, {device = devices.WEAPON_SYS, action = device_commands.Button_22, value = -1.0})
 push_start_command(dt, {device = devices.WEAPON_SYS, action = device_commands.Button_27, value = 1.0})
-push_start_command(dt, {device = devices.PKV, action = device_commands.Button_3, value = -1.0}) 
---todo Right Dome switch "left and right ceiling light switch.  and 5.5v light switch and ARC-UH Light Switch and cargo cabin duty lights" sdasdasdas155
+push_start_command(dt, {device = devices.PKV, action = device_commands.Button_3, value = 1}) 
 push_start_command(dt, {device = devices.EXT_CARGO_EQUIPMENT, action = device_commands.Button_5, value = 1.0})
 push_start_command(dt, {device = devices.R_828, action = device_commands.Button_1, value = 0.4})
 push_start_command(dt, {device = devices.R_828, action = device_commands.Button_3, value = 1.0}) -- Press
@@ -313,18 +312,19 @@ for i = 1, 776, 1 do
 end
 
 --New Stuff
-push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_2, value = 0.0})
-push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_3, value = 0.0})
+push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_2, value = -1.0})
+push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_3, value = -1.0})
 push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_4, value = 1.0})
 push_start_command(dt, {device = devices.JADRO_1A, action = device_commands.Button_1, value = 1.0})
 push_start_command(dt, {device = devices.ARC_UD, action = device_commands.Button_12, value = 1.0})
 push_start_command(dt, {device = devices.ARC_UD, action = device_commands.Button_12, value = 1.0})
 
 push_start_command(dt, {device = devices.HEATER_KO50, action = device_commands.Button_4, value = 1.0})
-push_start_command(dt, {device = devices.HEATER_KO50, action = device_commands.Button_3, value = 1.0})
+push_start_command(dt, {device = devices.HEATER_KO50, action = device_commands.Button_3, value = -1.0})
 push_start_command(dt, {device = devices.HEATER_KO50, action = device_commands.Button_2, value = 1.0})
 push_start_command(dt, {device = devices.HEATER_KO50, action = device_commands.Button_1, value = 1.0}) --Press
 push_start_command(10.0, {device = devices.HEATER_KO50, action = device_commands.Button_1, value = 0.0}) -- Release
+push_start_command(dt, {device = devices.HEATER_KO50, action = device_commands.Button_4, value = 0.0})
 push_start_command(dt, {device = devices.ARC_UD, action = device_commands.Button_4, value = 0.0})
 push_start_command(dt, {device = devices.ARC_UD, action = device_commands.Button_12, value = 1.0})
 
