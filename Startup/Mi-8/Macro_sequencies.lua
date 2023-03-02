@@ -148,6 +148,11 @@ push_start_command(dt, {device = devices.FUELSYS_INTERFACE, action = device_comm
 push_start_command(dt, {message = _("R-828 RADIO POWER - ON"), message_timeout = mto})
 push_start_command(dt, {device = devices.R_828, action = device_commands.Button_5, value = 1.0})
 
+push_start_command(dt, {message = _("Danger Alarm To 20 Meters - that's the length of your cable"), message_timeout = dt_mto})
+for i = 1, 776, 1 do
+	push_start_command(0.01, {device = devices.RADAR_ALTIMETER, action = device_commands.Button_1, value = -.00104})
+end
+
 -- APU
 push_start_command(dt, {message = _("STARTING APU (20 SEC)"), message_timeout = 20.0})
 push_start_command(dt, {message = _("APU START MODE - START"), message_timeout = mto})
@@ -155,15 +160,18 @@ push_start_command(dt, {device = devices.ENGINE_INTERFACE, action = device_comma
 push_start_command(dt, {message = _("APU START BUTTON - HOLD FOR 3 SEC"), message_timeout = mto})
 push_start_command(dt, {device = devices.ENGINE_INTERFACE, action = device_commands.Button_26, value = 1.0}) -- Press
 push_start_command(3.0, {device = devices.ENGINE_INTERFACE, action = device_commands.Button_26, value = 0.0}) -- Release
--- Backup Gen and Equip Test, so that we can tune the radios before the engines start up
--- TODO
 push_start_command(17.0, {message = _("APU STARTED"), message_timeout = mto})
+
+-- Backup Gen and Equip Test, so that we can tune the radios before the engines start up
+push_start_command(17.0, {message = _("Stand-By Gen and Equip Test, so that we can tune the radios"), message_timeout = mto})
 push_start_command(dt, {device = devices.ELEC_INTERFACE, action = device_commands.Button_1, value = 1.0})  -- Standby Generator Switch, ON/OFF
 push_start_command(dt, {device = devices.ELEC_INTERFACE, action = device_commands.Button_9, value = 1.0})  -- Equipment Test Switch, ON/OFF
+-- Then we can tune to 30.00 FM
 push_start_command(dt, {device = devices.R_828, action = device_commands.Button_1, value = 0.4})
 push_start_command(dt, {device = devices.R_828, action = device_commands.Button_3, value = 1.0}) -- Press
 push_start_command(3.0, {device = devices.R_828, action = device_commands.Button_3, value = 0.0}) -- Release
 
+-- Remove for smoky
 -- Left engine
 push_start_command(dt, {message = _("STARTING LEFT ENGINE (47 SEC)"), message_timeout = 47.0})
 push_start_command(dt, {message = _("ENGINE START MODE - START"), message_timeout = mto})
@@ -198,6 +206,7 @@ push_start_command(dt, {action = Keys.iCommand_ThrottleIncrease})
 push_start_command(4.0, {action = Keys.iCommand_ThrottleStop})
 push_start_command(dt, {message = _("ALLOW RPM TO STABILIZE (10 SEC)"), message_timeout = 10.0})
 push_start_command(10.0, {message = _("RPM STABILIZED"), message_timeout = mto})
+-- End remove for smoky
 
 -- Generators and Rectifiers
 push_start_command(dt, {message = _("TURN ON GENERATORS"), message_timeout = mto})
@@ -219,6 +228,7 @@ push_start_command(dt, {device = devices.ELEC_INTERFACE, action = device_command
 push_start_command(dt, {message = _("36V INVERTER - AUTO (down)"), message_timeout = mto})
 push_start_command(dt, {device = devices.ELEC_INTERFACE, action = device_commands.Button_13, value = -1.0})
 
+-- Remove this as well
 push_start_command(dt, {message = _("APU STOP"), message_timeout = mto})
 push_start_command(dt, {device = devices.ENGINE_INTERFACE, action = device_commands.Button_7, value = 1.0}) -- Press
 push_start_command(dt, {device = devices.ENGINE_INTERFACE, action = device_commands.Button_7, value = 0.0}) -- Release
@@ -243,6 +253,20 @@ push_start_command(dt, {device = devices.AGB_3K_RIGHT, action = device_commands.
 push_start_command(dt, {message = _("COMM RADIO - ON"), message_timeout = mto})
 push_start_command(dt, {device = devices.JADRO_1A, action = device_commands.Button_13, value = 1.0})
 
+--Lights
+push_start_command(dt, {message = _("Let there be lights!"), message_timeout = mto})
+push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_11, value = 1.0})
+push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_10, value = 1.0})
+push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_9, value = 1.0})
+push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_8, value = 1.0})
+push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_7, value = 1.0})
+push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_6, value = 1.0})
+push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_5, value = 1.0})
+push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_23, value = 1.0})
+push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_2, value = -1.0})
+push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_3, value = -1.0})
+push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_4, value = 1.0})
+
 -- Other
 push_start_command(dt, {message = _("RADAR ALTIMETER - ON"), message_timeout = mto})
 push_start_command(dt, {device = devices.RADAR_ALTIMETER, action = device_commands.Button_3, value = 1.0})
@@ -251,12 +275,22 @@ push_start_command(dt, {message = _("RADAR ALTIMETER - 20M for length of cargo c
 --push_start_command(dt, {device = devices.RADAR_ALTIMETER, action = device_commands.Button_1, value = 0.02}) -- this turns it off
 push_start_command(dt, {device = devices.RADAR_ALTIMETER, action = device_commands.Button_2, value = 1.0}) -- not sure what this one does
 --push_start_command(dt, {device = devices.RADAR_ALTIMETER, action = device_commands.Button_4, value = 0.02}) -- this one also turns it off
+push_start_command(dt, {message = _("Caging Gyro"), message_timeout = mto})
+push_start_command(2.0, {device = devices.AGB_3K_RIGHT, action = device_commands.Button_2, value = 1.0}) -- Press
+push_start_command(dt, {device = devices.AGB_3K_RIGHT, action = device_commands.Button_2, value = 0.0}) -- Release
+push_start_command(dt, {message = _("Aligning Gyro...  Takes 30 seconds or so, but you can take off without it if you're not bothered."), message_timeout = 10.0})
 
-push_start_command(dt, {message = _("FLASHER - ON"), message_timeout = mto})
-push_start_command(dt, {device = devices.SYS_CONTROLLER, action = device_commands.Button_5, value = 1.0})
-push_start_command(dt, {message = _("AUTOPILOT ROLL/PITCH CHANNEL - ON"), message_timeout = mto})
-push_start_command(dt, {device = devices.AUTOPILOT, action = device_commands.Button_2, value = 1.0}) -- Press
-push_start_command(dt, {device = devices.AUTOPILOT, action = device_commands.Button_2, value = 0.0}) -- Release
+push_start_command(dt, {message = _("Resetting Accelerometer - now let's see how many Gs you can pull..."), message_timeout = mto})
+push_start_command(1.0, {device = devices.CPT_MECH, action =  device_commands.Button_6, value = 1.0}) -- Press
+push_start_command(dt, {device = devices.CPT_MECH, action = device_commands.Button_6, value = 0.0}) -- Release
+-- no clicking thank you!
+--push_start_command(dt, {message = _("FLASHER - ON"), message_timeout = mto})
+--push_start_command(dt, {device = devices.SYS_CONTROLLER, action = device_commands.Button_5, value = 1.0})
+
+-- we have this below
+--push_start_command(dt, {message = _("AUTOPILOT ROLL/PITCH CHANNEL - ON"), message_timeout = mto})
+--push_start_command(dt, {device = devices.AUTOPILOT, action = device_commands.Button_2, value = 1.0}) -- Press
+--push_start_command(dt, {device = devices.AUTOPILOT, action = device_commands.Button_2, value = 0.0}) -- Release
 
 -- UV-26 countermeasures system
 push_start_command(dt, {message = _("UV-26 POWER - ON"), message_timeout = mto})
@@ -282,65 +316,74 @@ push_start_command(dt, {message = _("COPILOT'S FAN - ON"), message_timeout = mto
 
 -- Yushin rocket arming
 push_start_command(dt, {message = _("Yushin Weapon Startup Proceeding"), message_timeout = 10})
+-- closing co-pilot window (closed by default)
 push_start_command(dt, {device = devices.CPT_MECH, action = device_commands.Button_21, value = 1.0})
-push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_23, value = 1.0})
---push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_22, value = 1.0})
-push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_11, value = 1.0})
-push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_10, value = 1.0})
-push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_9, value = 1.0})
-push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_8, value = 1.0})
-push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_7, value = 1.0})
-push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_6, value = 1.0})
-push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_5, value = 1.0})
+-- Pretty lights on the outside
 push_start_command(dt, {device = devices.NAVLIGHT_SYSTEM, action = device_commands.Button_14, value = 1.0})
 push_start_command(dt, {device = devices.NAVLIGHT_SYSTEM, action = device_commands.Button_15, value = 1.0})
 push_start_command(dt, {device = devices.NAVLIGHT_SYSTEM, action = device_commands.Button_16, value = 1.0})
 push_start_command(dt, {device = devices.NAVLIGHT_SYSTEM, action = device_commands.Button_12, value = 1.0})
 push_start_command(dt, {device = devices.NAVLIGHT_SYSTEM, action = device_commands.Button_13, value = 1.0})
---push_start_command(dt, {device = devices.ELEC_INTERFACE, action = device_commands.Button_22, value = 1.0})
---push_start_command(dt, {device = devices.ELEC_INTERFACE, action = device_commands.Button_23, value = 1.0})
---push_start_command(dt, {device = devices.ELEC_INTERFACE, action = device_commands.Button_24, value = 1.0})
+
 push_start_command(dt, {device = devices.WEAPON_SYS, action = device_commands.Button_30, value = 1.0})
 push_start_command(dt, {device = devices.WEAPON_SYS, action = device_commands.Button_22, value = -1.0})
-push_start_command(dt, {device = devices.WEAPON_SYS, action = device_commands.Button_27, value = 1.0})
-push_start_command(dt, {device = devices.PKV, action = device_commands.Button_3, value = 1}) 
+push_start_command(dt, {device = devices.WEAPON_SYS, action = device_commands.Button_27, value = 1.0}) -- remove for smoky
+push_start_command(dt, {message = _("BE ADVISED, IF YOU ARE CARRYING ROCKETS, YOU ARE HOT!"), message_timeout = 30})
+
+-- TODO: figure out what this value should be set to
+--push_start_command(dt, {device = devices.PKV, action = device_commands.Button_3, value = 1}) 
+
+push_start_command(dt, {message = _("Setting cargo hook to let go automatically, no one likes a clinger"), message_timeout = 10})
 push_start_command(dt, {device = devices.EXT_CARGO_EQUIPMENT, action = device_commands.Button_5, value = 1.0})
+
+-- Tuning into Rifle FM
+push_start_command(dt, {message = _("Tuning into Rifle FM!  Hope that guy isn't still hot micing..."), message_timeout = 10})
 push_start_command(dt, {device = devices.R_828, action = device_commands.Button_1, value = 0.4})
 push_start_command(dt, {device = devices.R_828, action = device_commands.Button_3, value = 1.0}) -- Press
 push_start_command(3.0, {device = devices.R_828, action = device_commands.Button_3, value = 0.0}) -- Release
-push_start_command(dt, {message = _("BE ADVISED, IF YOU ARE CARRYING ROCKETS, YOU ARE HOT!"), message_timeout = 30})
-push_start_command(dt, {message = _("Danger Alarm To 20 Meters"), message_timeout = dt_mto})
-for i = 1, 776, 1 do
-	push_start_command(0.01, {device = devices.RADAR_ALTIMETER, action = device_commands.Button_1, value = -.00104})
-end
+push_start_command(dt, {device = devices.JADRO_1A, action = device_commands.Button_1, value = 1.0})
+
+-- TODO: need to adjust the volume on this rotary: 
+--elements["PTR-ADDSECPLT-LVR-CHNL"].sound = {{SOUND_ROTARY_1,SOUND_ROTARY_1},{SOUND_ROTARY_1,SOUND_ROTARY_1}}
+--elements["PTR-LPE-LVR-CHANNEL"].sound = {{SOUND_ROTARY_1,SOUND_ROTARY_1},{SOUND_ROTARY_1,SOUND_ROTARY_1}}
 
 --New Stuff
-push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_2, value = -1.0})
-push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_3, value = -1.0})
-push_start_command(dt, {device = devices.LIGHT_SYSTEM, action = device_commands.Button_4, value = 1.0})
-push_start_command(dt, {device = devices.JADRO_1A, action = device_commands.Button_1, value = 1.0})
-push_start_command(dt, {device = devices.ARC_UD, action = device_commands.Button_12, value = 1.0})
-push_start_command(dt, {device = devices.ARC_UD, action = device_commands.Button_12, value = 1.0})
-
-push_start_command(dt, {device = devices.HEATER_KO50, action = device_commands.Button_4, value = 1.0})
-push_start_command(dt, {device = devices.HEATER_KO50, action = device_commands.Button_3, value = -1.0})
-push_start_command(dt, {device = devices.HEATER_KO50, action = device_commands.Button_2, value = 1.0})
-push_start_command(dt, {device = devices.HEATER_KO50, action = device_commands.Button_1, value = 1.0}) --Press
-push_start_command(10.0, {device = devices.HEATER_KO50, action = device_commands.Button_1, value = 0.0}) -- Release
-push_start_command(dt, {device = devices.HEATER_KO50, action = device_commands.Button_4, value = 0.0})
+-- No idea what this one does, neither does smoky - lol
+-- Do we need to press ARC-UD, Lock Switch, LOCK/UNLOCK three times?
+--push_start_command(dt, {device = devices.ARC_UD, action = device_commands.Button_12, value = 1.0})
+--push_start_command(dt, {device = devices.ARC_UD, action = device_commands.Button_12, value = 1.0})
 push_start_command(dt, {device = devices.ARC_UD, action = device_commands.Button_4, value = 0.0})
 push_start_command(dt, {device = devices.ARC_UD, action = device_commands.Button_12, value = 1.0})
+
+-- Combust heater was fun for a while - add back for cold weather
+-- push_start_command(dt, {device = devices.HEATER_KO50, action = device_commands.Button_4, value = 1.0})
+-- push_start_command(dt, {device = devices.HEATER_KO50, action = device_commands.Button_3, value = -1.0})
+-- push_start_command(dt, {device = devices.HEATER_KO50, action = device_commands.Button_2, value = 1.0})
+-- push_start_command(dt, {device = devices.HEATER_KO50, action = device_commands.Button_1, value = 1.0}) --Press
+-- push_start_command(10.0, {device = devices.HEATER_KO50, action = device_commands.Button_1, value = 0.0}) -- Release
+-- push_start_command(dt, {device = devices.HEATER_KO50, action = device_commands.Button_4, value = 0.0})
 
 -- now we should be safe to close the windows
 push_start_command(dt, {message = _("LEFT COCKPIT WINDOW - CLOSE"), message_timeout = mto})
 push_start_command(dt, {device = devices.CPT_MECH, action = device_commands.Button_15, value = 0.0})
 
-push_start_command(dt, {message = _("HAVOC'S QUICK AUTOSTART COMPLETE"), message_timeout = 60})
-push_start_command(dt, {message = _("Manual steps remaining:"), message_timeout = 60})
-push_start_command(dt, {message = _("Lights ... As needed"), message_timeout = 60})
-push_start_command(dt, {message = _("Radios ... As needed"), message_timeout = 60})
-push_start_command(dt, {message = _("Navigation ... As needed"), message_timeout = 60})
-push_start_command(dt, {message = _("Altimeter ... Set to match QFE (airfield elevation) or QNH (sea level altitude) as desired"), message_timeout = 60})
+push_start_command(dt, {message = _("AUTOPILOT ROLL/PITCH CHANNEL - ON"), message_timeout = mto})
+push_start_command(dt, {device = devices.AUTOPILOT, action = device_commands.Button_2, value = 1.0}) -- Press
+push_start_command(dt, {device = devices.AUTOPILOT, action = device_commands.Button_2, value = 0.0}) -- Release
+
+-- toot the horn!
+push_start_command(0.5, {device = devices.MISC_SYSTEMS_INTERFACE, action = device_commands.Button_1, value = 1.0}) -- Press
+push_start_command(dt, {device = devices.AUTOPILOT, action = device_commands.Button_2, value = 0.0}) -- Release
+push_start_command(0.5, {device = devices.MISC_SYSTEMS_INTERFACE, action = device_commands.Button_1, value = 1.0}) -- Press
+push_start_command(dt, {device = devices.AUTOPILOT, action = device_commands.Button_2, value = 0.0}) -- Release
+
+push_start_command(dt, {message = _("Ready for Take-off, good (Will) hunting!"), message_timeout = 60})
+push_start_command(dt, {message = _("Manual steps remaining:"), message_timeout = 20})
+--push_start_command(dt, {message = _("Lights ... As needed"), message_timeout = 60})
+--push_start_command(dt, {message = _("Radios ... As needed"), message_timeout = 60})
+push_start_command(dt, {message = _("Navigation ... As needed"), message_timeout = 20})
+push_start_command(dt, {message = _("Altimeter ... Set to match QFE (airfield elevation) or QNH (sea level altitude) as desired"), message_timeout = 20})
+push_start_command(dt, {message = _("ADF ... Set to where you want to go"), message_timeout = 20})
 end
 doStartSequence()
 
