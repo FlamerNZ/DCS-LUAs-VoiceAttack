@@ -278,7 +278,7 @@ push_start_command(dt, {device = devices.RADAR_ALTIMETER, action = device_comman
 push_start_command(dt, {message = _("Caging Gyros"), message_timeout = mto})
 push_start_command(2.0, {device = devices.AGB_3K_LEFT, action = device_commands.Button_2, value = 1.0}) -- Press
 push_start_command(dt, {device = devices.AGB_3K_LEFT, action = device_commands.Button_2, value = 0.0}) -- Release
-push_start_command(2.0, {device = devices._RIAGB_3KGHT, action = device_commands.Button_2, value = 1.0}) -- Press
+push_start_command(2.0, {device = devices.AGB_3K_RIGHT, action = device_commands.Button_2, value = 1.0}) -- Press
 push_start_command(dt, {device = devices.AGB_3K_RIGHT, action = device_commands.Button_2, value = 0.0}) -- Release
 push_start_command(dt, {message = _("Aligning Gyro...  Takes 30 seconds or so, but you can take off without it if you're not bothered."), message_timeout = 10.0})
 
@@ -377,7 +377,7 @@ push_start_command(dt, {device = devices.AUTOPILOT, action = device_commands.But
 push_start_command(0.5, {device = devices.MISC_SYSTEMS_INTERFACE, action = device_commands.Button_1, value = 1.0}) -- Press
 push_start_command(dt, {device = devices.MISC_SYSTEMS_INTERFACE, action = device_commands.Button_1, value = 0.0}) -- Release
 push_start_command(0.5, {device = devices.MISC_SYSTEMS_INTERFACE, action = device_commands.Button_1, value = 1.0}) -- Press
-push_start_command(dt, {devices.MISC_SYSTEMS_INTERFACE, action = device_commands.Button_1, value = 0.0}) -- Release
+push_start_command(dt, {device = devices.MISC_SYSTEMS_INTERFACE, action = device_commands.Button_1, value = 0.0}) -- Release
 
 push_start_command(dt, {message = _("Ready for Take-off, good (Will) hunting!"), message_timeout = 60})
 push_start_command(dt, {message = _("Manual steps remaining:"), message_timeout = 20})
