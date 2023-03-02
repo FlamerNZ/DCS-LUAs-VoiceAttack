@@ -275,8 +275,10 @@ push_start_command(dt, {message = _("RADAR ALTIMETER - 20M for length of cargo c
 --push_start_command(dt, {device = devices.RADAR_ALTIMETER, action = device_commands.Button_1, value = 0.02}) -- this turns it off
 push_start_command(dt, {device = devices.RADAR_ALTIMETER, action = device_commands.Button_2, value = 1.0}) -- not sure what this one does
 --push_start_command(dt, {device = devices.RADAR_ALTIMETER, action = device_commands.Button_4, value = 0.02}) -- this one also turns it off
-push_start_command(dt, {message = _("Caging Gyro"), message_timeout = mto})
-push_start_command(2.0, {device = devices.AGB_3K_RIGHT, action = device_commands.Button_2, value = 1.0}) -- Press
+push_start_command(dt, {message = _("Caging Gyros"), message_timeout = mto})
+push_start_command(2.0, {device = devices.AGB_3K_LEFT, action = device_commands.Button_2, value = 1.0}) -- Press
+push_start_command(dt, {device = devices.AGB_3K_LEFT, action = device_commands.Button_2, value = 0.0}) -- Release
+push_start_command(2.0, {device = devices._RIAGB_3KGHT, action = device_commands.Button_2, value = 1.0}) -- Press
 push_start_command(dt, {device = devices.AGB_3K_RIGHT, action = device_commands.Button_2, value = 0.0}) -- Release
 push_start_command(dt, {message = _("Aligning Gyro...  Takes 30 seconds or so, but you can take off without it if you're not bothered."), message_timeout = 10.0})
 
@@ -373,9 +375,9 @@ push_start_command(dt, {device = devices.AUTOPILOT, action = device_commands.But
 
 -- toot the horn!
 push_start_command(0.5, {device = devices.MISC_SYSTEMS_INTERFACE, action = device_commands.Button_1, value = 1.0}) -- Press
-push_start_command(dt, {device = devices.AUTOPILOT, action = device_commands.Button_2, value = 0.0}) -- Release
+push_start_command(dt, {device = devices.MISC_SYSTEMS_INTERFACE, action = device_commands.Button_1, value = 0.0}) -- Release
 push_start_command(0.5, {device = devices.MISC_SYSTEMS_INTERFACE, action = device_commands.Button_1, value = 1.0}) -- Press
-push_start_command(dt, {device = devices.AUTOPILOT, action = device_commands.Button_2, value = 0.0}) -- Release
+push_start_command(dt, {devices.MISC_SYSTEMS_INTERFACE, action = device_commands.Button_1, value = 0.0}) -- Release
 
 push_start_command(dt, {message = _("Ready for Take-off, good (Will) hunting!"), message_timeout = 60})
 push_start_command(dt, {message = _("Manual steps remaining:"), message_timeout = 20})
