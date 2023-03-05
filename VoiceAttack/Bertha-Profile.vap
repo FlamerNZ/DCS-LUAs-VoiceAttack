@@ -14249,7 +14249,7 @@
       <ShortTapDelayedInvoked>false</ShortTapDelayedInvoked>
       <SleepFlag>0</SleepFlag>
       <Id>6d68799b-7a71-477a-a873-d523a98e9096</Id>
-      <CommandString>Wake Up Bertha; hey Bertha; morning Bertha; afternoon Bertha hello Bertha; who's a good girl?; let's go fuck em up Bertha; let's get this party started, let's get this party started Bertha; good morning Bertha; good afternoon Bertha; evening Bertha; Good Evening Bertha; afternoon Bertha</CommandString>
+      <CommandString>Wake Up Bertha; hey Bertha; morning Bertha; afternoon Bertha; hello Bertha; who's a good girl?; let's go fuck em up Bertha; let's get this party started, let's get this party started Bertha; good morning Bertha; good afternoon Bertha; evening Bertha; Good Evening Bertha; afternoon Bertha</CommandString>
       <ActionSequence>
         <CommandAction>
           <PairingSet>false</PairingSet>
