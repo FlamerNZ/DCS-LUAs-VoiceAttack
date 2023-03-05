@@ -339,22 +339,12 @@ push_start_command(dt, {message = _("BE ADVISED, IF YOU ARE CARRYING ROCKETS, YO
 push_start_command(dt, {message = _("Setting cargo hook to let go automatically, no one likes a clinger"), message_timeout = 10})
 push_start_command(dt, {device = devices.EXT_CARGO_EQUIPMENT, action = device_commands.Button_5, value = 1.0})
 
--- -- Tuning into Rifle FM - done above
--- push_start_command(dt, {message = _("Tuning into Rifle FM!  Hope that guy isn't still hot micing..."), message_timeout = 10})
--- push_start_command(dt, {device = devices.R_828, action = device_commands.Button_1, value = 0.4})
--- push_start_command(dt, {device = devices.R_828, action = device_commands.Button_3, value = 1.0}) -- Press
--- push_start_command(3.0, {device = devices.R_828, action = device_commands.Button_3, value = 0.0}) -- Release
--- push_start_command(dt, {device = devices.JADRO_1A, action = device_commands.Button_1, value = 1.0})
-
 -- TODO: need to adjust the volume on this rotary: 
 --elements["PTR-ADDSECPLT-LVR-CHNL"].sound = {{SOUND_ROTARY_1,SOUND_ROTARY_1},{SOUND_ROTARY_1,SOUND_ROTARY_1}}
 --elements["PTR-LPE-LVR-CHANNEL"].sound = {{SOUND_ROTARY_1,SOUND_ROTARY_1},{SOUND_ROTARY_1,SOUND_ROTARY_1}}
 
 --New Stuff
 -- No idea what this one does, neither does smoky - lol
--- Do we need to press ARC-UD, Lock Switch, LOCK/UNLOCK three times?
---push_start_command(dt, {device = devices.ARC_UD, action = device_commands.Button_12, value = 1.0})
---push_start_command(dt, {device = devices.ARC_UD, action = device_commands.Button_12, value = 1.0})
 push_start_command(dt, {device = devices.ARC_UD, action = device_commands.Button_4, value = 0.0})
 push_start_command(dt, {device = devices.ARC_UD, action = device_commands.Button_12, value = 1.0})
 
@@ -365,6 +355,12 @@ push_start_command(dt, {device = devices.ARC_UD, action = device_commands.Button
 -- push_start_command(dt, {device = devices.HEATER_KO50, action = device_commands.Button_1, value = 1.0}) --Press
 -- push_start_command(10.0, {device = devices.HEATER_KO50, action = device_commands.Button_1, value = 0.0}) -- Release
 -- push_start_command(dt, {device = devices.HEATER_KO50, action = device_commands.Button_4, value = 0.0})
+
+push_start_command(dt, {message = _("Danger Alarm To 20 Meters"), message_timeout = dt_mto})
+for i = 1, 776, 1 do
+	push_start_command(0.01, {device = devices.RADAR_ALTIMETER, action = device_commands.Button_1, value = -.00104})
+end
+-- this will be great once we get it going
 
 -- now we should be safe to close the windows
 push_start_command(dt, {message = _("LEFT COCKPIT WINDOW - CLOSE"), message_timeout = mto})
