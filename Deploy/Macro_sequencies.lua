@@ -297,7 +297,7 @@ local function doStartSequence()
 	local seq = start
 	
 	-- Start sequence
-	push_combined(start, 0, {message = _("HAVOC'S QUICK AUTOSTART IS RUNNING"), message_timeout = dt_mto}) -- Message text and timeout will be modified by insertTimeRemaining function below.
+	push_combined(start, 0, {message = _("HAVOC'S(FlamerNZ/Yushin Engine 2 Fix) QUICK AUTOSTART IS RUNNING"), message_timeout = dt_mto}) -- Message text and timeout will be modified by insertTimeRemaining function below.
 
 	-- Interior check
 	-- PLT
