@@ -1,4 +1,5 @@
 ## Script to backup the current Mi8 auto start script and replace with our custom one from the current repo
+$ErrorActionPreference = "Stop"
 $macroSequenciesRelPath = "Mods\aircraft\Mi-8MTV2\Cockpit\Scripts\Macro_sequencies.lua"
 
 Write-Host "`n** Shifty's Mi8 Auto Start Script deployment script script :P **`n"
