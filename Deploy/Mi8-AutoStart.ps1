@@ -21,3 +21,5 @@ if(!$installPath)
 {
   Read-Host ""
 }
+
+#comment
